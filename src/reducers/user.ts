@@ -23,5 +23,8 @@ export const user = createSlice({
 		saveAnswer: (state, action: PayloadAction<number>) => {
 			state.answers.push(action.payload);
 		},
+		reset: () => {
+			return initialState;
+		},
 	},
 });

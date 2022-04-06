@@ -11,7 +11,6 @@ const Questions = (): JSX.Element => {
 	);
 
 	const indexInt = parseInt(index ?? '0', 10);
-	const firstQuestion = 1;
 	const nextQuestionIndex = indexInt + 1;
 	const previousQuestionIndex = indexInt - 1;
 
@@ -27,7 +26,7 @@ const Questions = (): JSX.Element => {
 			<h3>{name} is playing!</h3>
 			<CurrentQuestion {...question} />
 			{/* logiken för att displaya previous question kräver logik för att inte kunna välja ett nytt svarsalternativ om man har gått tillbaka till en fråga man redan svarat på, annars blir användarens svarsarray längre än den med korrekta savar */}
-			{firstQuestion !== nextQuestionIndex && (
+			{previousQuestionIndex >= 0 && (
 				<Link to={`/quiz/${previousQuestionIndex}`}> Previous question</Link>
 			)}
 			{nextQuestionIndex === numberOfQuestions ? (
