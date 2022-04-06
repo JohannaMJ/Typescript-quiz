@@ -1,6 +1,5 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../App';
+import { useDispatch } from 'react-redux';
 import { Options } from '../reducers/quiz';
 import { user } from '../reducers/user';
 
@@ -22,11 +21,10 @@ const CurrentQuestion = ({ question, options }: QuestionProps) => {
 		<div>
 			<p>{question}</p>
 			{options.map((option, index) => (
-				<button key={option.answer} onClick={() => onAnswerSubmit(index)}>
-					{option.answer}
+				<button key={option} onClick={() => onAnswerSubmit(index)}>
+					{option}
 				</button>
 			))}
-			<p>{``}</p>
 		</div>
 	);
 };

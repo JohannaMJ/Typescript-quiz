@@ -1,11 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-export type Options = [
-	{ answer: string },
-	{ answer: string },
-	{ answer: string },
-	{ answer: string }
-];
+export type Options = [string, string, string, string];
 
 type Question = {
 	id: string;
@@ -19,23 +14,13 @@ const questions: Question[] = [
 	{
 		id: '1',
 		question: 'What year is it?',
-		options: [
-			{ answer: '2000' },
-			{ answer: '3000' },
-			{ answer: '300' },
-			{ answer: '2022' },
-		],
+		options: ['1', '2', '3', '4'],
 		correctAnswer: 3,
 	},
 	{
 		id: '2',
 		question: 'What animal is it?',
-		options: [
-			{ answer: 'fish' },
-			{ answer: 'mouse' },
-			{ answer: 'cat' },
-			{ answer: 'rhino' },
-		],
+		options: ['fish', 'mouse', 'cat', 'rhino'],
 		correctAnswer: 2,
 	},
 ];

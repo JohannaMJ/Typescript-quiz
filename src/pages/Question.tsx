@@ -3,26 +3,22 @@ import { Link, useParams } from 'react-router-dom';
 import { RootState } from '../App';
 import CurrentQuestion from '../components/CurrentQuestion';
 
-// type QuestionProps = { active: number }
-// { active }: QuestionProps
-
 const Questions = (): JSX.Element => {
-	let { index } = useParams();
+	const { index } = useParams();
 
 	const numberOfQuestions = useSelector<RootState, number>(
 		(state) => state.quiz.questions.length
 	);
 
 	const indexInt = parseInt(index ?? '0', 10);
+	const firstQuestion = 1;
+	const nextQuestionIndex = indexInt + 1;
+	const previousQuestionIndex = indexInt - 1;
 
 	const question = useSelector(
 		(state: RootState) => state.quiz.questions[indexInt]
 	);
 	const name = useSelector((state: RootState) => state.user.name);
-
-	console.log('no of questions:', numberOfQuestions);
-	console.log('int', indexInt);
-	console.log('question:', question);
 
 	return (
 		<div>
@@ -30,10 +26,14 @@ const Questions = (): JSX.Element => {
 			<h2>Questions left: {numberOfQuestions - indexInt}</h2>
 			<h3>{name} is playing!</h3>
 			<CurrentQuestion {...question} />
-			{indexInt + 1 === numberOfQuestions ? (
+			{/* logiken för att displaya previous question kräver logik för att inte kunna välja ett nytt svarsalternativ om man har gått tillbaka till en fråga man redan svarat på, annars blir användarens svarsarray längre än den med korrekta savar */}
+			{firstQuestion !== nextQuestionIndex && (
+				<Link to={`/quiz/${previousQuestionIndex}`}> Previous question</Link>
+			)}
+			{nextQuestionIndex === numberOfQuestions ? (
 				<Link to={`/summary`}> Finish quiz</Link>
 			) : (
-				<Link to={`/quiz/${indexInt + 1}`}> Next question</Link>
+				<Link to={`/quiz/${nextQuestionIndex}`}> Next question</Link>
 			)}
 		</div>
 	);

@@ -6,24 +6,20 @@ const Summary = () => {
 	const correctAnswers = useSelector((state: RootState) =>
 		state.quiz.questions.map((question) => question.correctAnswer)
 	);
-
-	console.log('summary:', correctAnswers);
-
 	const user = useSelector((state: RootState) => state.user);
-
 	const userAnswers = user.answers;
-
-	console.log(userAnswers);
 
 	const results = userAnswers.map(
 		(answer, index) => answer === correctAnswers[index]
 	);
-	console.log('result:', results);
-
 	const numberOfCorrectAnswers = results.filter(
 		(result) => result === true
 	).length;
-	console.log(numberOfCorrectAnswers);
+
+	console.log('correct answer aray:', correctAnswers);
+	console.log('user answer array', userAnswers);
+	console.log('results:', results);
+	console.log("amount of user's correct answers", numberOfCorrectAnswers);
 
 	return (
 		<div>
