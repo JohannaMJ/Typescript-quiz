@@ -35,8 +35,27 @@ export const quiz = createSlice({
 	name: 'quiz',
 	initialState,
 	reducers: {
+		// setQuestions: (state, action) => {
+		// 	state.questions = action.payload;
+		// },
 		restart: () => {
 			return initialState;
 		},
 	},
 });
+
+// export const fetchQuestions = async () => {
+// 	return (dispatch) => {
+// 		const options = {
+// 			method: 'GET',
+// 			headers: {
+// 				'Content-Type': 'application/json',
+// 			},
+// 		};
+// 		fetch('https://opentdb.com/api.php?amount=50&type=multiple', options)
+// 			.then((res) => res.json())
+// 			.then((json) => {
+// 				dispatch(quiz.actions.setQuestions(json));
+// 			});
+// 	};
+// };

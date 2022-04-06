@@ -11,6 +11,7 @@ import Quiz from './pages/Quiz';
 import Question from './pages/Question';
 import './App.css';
 import Summary from './pages/Summary';
+import NotFound from './pages/NotFound';
 
 const reducer = combineReducers({
 	quiz: quiz.reducer,
@@ -31,6 +32,7 @@ const App = () => {
 					<Route path='quiz' element={<Quiz />} />
 					<Route path='quiz/:index' element={<Question />} />
 					<Route path='summary' element={<Summary />} />
+					<Route path='*' element={<NotFound />} />
 				</Routes>
 			</BrowserRouter>
 		</Provider>
