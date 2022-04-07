@@ -1,12 +1,9 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import { RootState } from '../App';
-import { user } from '../reducers/user';
+import ResetBtn from '../components/ResetBtn';
 
 const Summary = () => {
-	const navigate = useNavigate();
-	const dispatch = useDispatch();
 	const correctAnswers = useSelector((state: RootState) =>
 		state.quiz.questions.map((question) => question.correctAnswer)
 	);
@@ -25,19 +22,19 @@ const Summary = () => {
 	console.log('results:', results);
 	console.log("amount of user's correct answers", numberOfCorrectAnswers);
 
-	const restart = () => {
-		// dispatch(user.actions.reset());
-		navigate('/');
-	};
-
 	return (
 		<div>
 			<h1>Summary</h1>
-			<h2>Well done {user.name}!</h2>
-			<p>
+			<h2>{user.name},</h2>
+			<h2>
 				You got {numberOfCorrectAnswers}/{correctAnswers.length} points!
-			</p>
-			<button onClick={restart}>Restart</button>
+			</h2>
+			{numberOfCorrectAnswers >= correctAnswers.length / 2 ? (
+				<h2>Well done!!</h2>
+			) : (
+				<p>You need to practice more...</p>
+			)}
+			<ResetBtn />
 		</div>
 	);
 };

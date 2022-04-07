@@ -1,4 +1,5 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { uid } from 'uid';
 
 export type Options = [string, string, string, string];
 
@@ -9,21 +10,7 @@ type Question = {
 	correctAnswer: number;
 };
 
-const questions: Question[] = [
-	//here goes an array of question object, structure example:
-	{
-		id: '1',
-		question: 'What year is it?',
-		options: ['1', '2', '3', '4'],
-		correctAnswer: 3,
-	},
-	{
-		id: '2',
-		question: 'What animal is it?',
-		options: ['fish', 'mouse', 'cat', 'rhino'],
-		correctAnswer: 2,
-	},
-];
+const questions: Question[] = [];
 
 console.log('array of questions:', questions);
 
@@ -34,28 +21,56 @@ const initialState = {
 export const quiz = createSlice({
 	name: 'quiz',
 	initialState,
-	reducers: {
-		// setQuestions: (state, action) => {
-		// 	state.questions = action.payload;
-		// },
-		restart: () => {
-			return initialState;
-		},
+	reducers: {},
+	extraReducers: (builder) => {
+		builder.addCase(fetchQuestions.fulfilled, (state, action) => {
+			console.log(action.payload.results);
+
+			const questions = action.payload.results.map<Question>((result) => {
+				const correctAnswer = Math.floor(
+					Math.random() * result.incorrect_answers.length + 1
+				);
+
+				const options = [
+					...result.incorrect_answers.slice(0, correctAnswer),
+					result.correct_answer,
+					...result.incorrect_answers.slice(correctAnswer),
+				] as Options;
+
+				console.log('random answer:', correctAnswer);
+
+				return {
+					id: uid(),
+					question: result.question,
+					options,
+					correctAnswer,
+				};
+			});
+
+			console.log('parsed questions', questions);
+			return { ...state, questions };
+		});
 	},
 });
 
-// export const fetchQuestions = async () => {
-// 	return (dispatch) => {
-// 		const options = {
-// 			method: 'GET',
-// 			headers: {
-// 				'Content-Type': 'application/json',
-// 			},
-// 		};
-// 		fetch('https://opentdb.com/api.php?amount=50&type=multiple', options)
-// 			.then((res) => res.json())
-// 			.then((json) => {
-// 				dispatch(quiz.actions.setQuestions(json));
-// 			});
-// 	};
-// };
+type OpentdbResult = {
+	question: string;
+	correct_answer: string;
+	incorrect_answers: [string, string, string];
+};
+
+type OpentdbResponse = {
+	results: OpentdbResult[];
+};
+
+export const fetchQuestions = createAsyncThunk(
+	'quiz/fetchQuestions',
+	async () => {
+		const response = await fetch(
+			'https://opentdb.com/api.php?amount=5&type=multiple'
+		);
+		const data: OpentdbResponse = await response.json();
+
+		return data;
+	}
+);

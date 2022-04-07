@@ -10,8 +10,6 @@ const initialState: UserInfo = {
 	answers: [],
 };
 
-console.log('user info:', initialState);
-
 export const user = createSlice({
 	name: 'user',
 	initialState,
@@ -20,8 +18,13 @@ export const user = createSlice({
 			...state,
 			name: action.payload,
 		}),
-		saveAnswer: (state, action: PayloadAction<number>) => {
-			state.answers.push(action.payload);
+		saveAnswer: (state, action: PayloadAction<[number, number]>) => {
+			const [questionIndex, answerValue] = action.payload;
+			if (state.answers[questionIndex]) {
+				state.answers[questionIndex] = answerValue;
+			} else {
+				state.answers.push(answerValue);
+			}
 		},
 		reset: () => {
 			return initialState;
