@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { useNavigate, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { RootState } from '../App';
 import CurrentQuestion from '../components/CurrentQuestion';
 import ResetBtn from '../components/ResetBtn';
@@ -24,22 +24,6 @@ const Questions = () => {
 		(state: RootState) => state.quiz.questions[indexInt]
 	);
 
-	const nextStep = () => {
-		if (answers.length === nextQuestionIndex) {
-			if (nextQuestionIndex === numberOfQuestions) {
-				navigate(`/summary`);
-			} else {
-				navigate(`/quiz/${nextQuestionIndex}`);
-			}
-		} else {
-			alert('Choose an answer!');
-		}
-	};
-
-	const previousStep = () => {
-		navigate(`/quiz/${previousQuestionIndex}`);
-	};
-
 	return (
 		<div>
 			<h1>{`Question: ${indexInt + 1}`}</h1>
@@ -47,13 +31,20 @@ const Questions = () => {
 			<h3>{name} is playing!</h3>
 			<CurrentQuestion {...question} questionIndex={indexInt} />
 			{previousQuestionIndex >= 0 && (
-				<button onClick={previousStep}>Previous question</button>
+				<Link to={`/quiz/${previousQuestionIndex}`}>Previous question</Link>
 			)}
-			{nextQuestionIndex === numberOfQuestions ? (
-				<button onClick={nextStep}> Finish quiz</button>
+			{answers.length === nextQuestionIndex ? (
+				<div>
+					{nextQuestionIndex === numberOfQuestions ? (
+						<Link to='/summary'> Finish quiz</Link>
+					) : (
+						<Link to={`/quiz/${nextQuestionIndex}`}>Next question</Link>
+					)}
+				</div>
 			) : (
-				<button onClick={nextStep}>Next question</button>
+				<p>Choose an answer to proceed</p>
 			)}
+
 			<div>
 				<ResetBtn />
 			</div>

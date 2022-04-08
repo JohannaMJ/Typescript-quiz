@@ -1,12 +1,11 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../App';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { fetchQuestions } from '../reducers/quiz';
 
 const Quiz = () => {
 	const dispatch = useDispatch();
-	const navigate = useNavigate();
 	const name = useSelector((state: RootState) => state.user.name);
 	const questions = useSelector((state: RootState) => state.quiz.questions);
 
@@ -14,23 +13,22 @@ const Quiz = () => {
 		dispatch(fetchQuestions());
 	}, [dispatch]);
 
-	const startGame = () => {
-		if (questions) {
-			navigate('/quiz/0');
-		}
-	};
-
-	const navigateBack = () => {
-		navigate('/');
-	};
-
 	return (
 		<div>
-			<h1>Hi {name}!</h1>
 			{name ? (
-				<button onClick={startGame}>Start quiz!</button>
+				<div>
+					<h1>Hi {name}!</h1>
+					{questions ? (
+						<Link to='/quiz/0'>Start quiz</Link>
+					) : (
+						<p>Loading questions...</p>
+					)}
+				</div>
 			) : (
-				<button onClick={navigateBack}>Go back and enter your name</button>
+				<div>
+					<h1>Hi!</h1>
+					<Link to='/'>Restart and enter your name!</Link>
+				</div>
 			)}
 		</div>
 	);
