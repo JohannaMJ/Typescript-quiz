@@ -1,13 +1,19 @@
 import { useSelector } from 'react-redux';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { RootState } from '../App';
 import CurrentQuestion from '../components/CurrentQuestion';
+import ResetBtn from '../components/ResetBtn';
 
-const Questions = (): JSX.Element => {
+const Questions = () => {
 	const { index } = useParams();
+	const navigate = useNavigate();
 
+	const name = useSelector((state: RootState) => state.user.name);
 	const numberOfQuestions = useSelector<RootState, number>(
 		(state) => state.quiz.questions.length
+	);
+	const answers = useSelector<RootState, number[]>(
+		(state) => state.user.answers
 	);
 
 	const indexInt = parseInt(index ?? '0', 10);
@@ -17,23 +23,31 @@ const Questions = (): JSX.Element => {
 	const question = useSelector(
 		(state: RootState) => state.quiz.questions[indexInt]
 	);
-	const name = useSelector((state: RootState) => state.user.name);
 
 	return (
 		<div>
 			<h1>{`Question: ${indexInt + 1}`}</h1>
 			<h2>Questions left: {numberOfQuestions - indexInt}</h2>
 			<h3>{name} is playing!</h3>
-			<CurrentQuestion {...question} />
-			{/* logiken för att displaya previous question kräver logik för att inte kunna välja ett nytt svarsalternativ om man har gått tillbaka till en fråga man redan svarat på, annars blir användarens svarsarray längre än den med korrekta savar */}
+			<CurrentQuestion {...question} questionIndex={indexInt} />
 			{previousQuestionIndex >= 0 && (
-				<Link to={`/quiz/${previousQuestionIndex}`}> Previous question</Link>
+				<Link to={`/quiz/${previousQuestionIndex}`}>Previous question</Link>
 			)}
-			{nextQuestionIndex === numberOfQuestions ? (
-				<Link to={`/summary`}> Finish quiz</Link>
+			{answers.length === nextQuestionIndex ? (
+				<div>
+					{nextQuestionIndex === numberOfQuestions ? (
+						<Link to='/summary'> Finish quiz</Link>
+					) : (
+						<Link to={`/quiz/${nextQuestionIndex}`}>Next question</Link>
+					)}
+				</div>
 			) : (
-				<Link to={`/quiz/${nextQuestionIndex}`}> Next question</Link>
+				<p>Choose an answer to proceed</p>
 			)}
+
+			<div>
+				<ResetBtn />
+			</div>
 		</div>
 	);
 };

@@ -6,11 +6,12 @@ import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { quiz } from './reducers/quiz';
 import { user } from './reducers/user';
 
+import './App.css';
 import StartPage from './pages/StartPage';
 import Quiz from './pages/Quiz';
 import Question from './pages/Question';
-import './App.css';
 import Summary from './pages/Summary';
+import NotFound from './pages/NotFound';
 
 const reducer = combineReducers({
 	quiz: quiz.reducer,
@@ -31,6 +32,7 @@ const App = () => {
 					<Route path='quiz' element={<Quiz />} />
 					<Route path='quiz/:index' element={<Question />} />
 					<Route path='summary' element={<Summary />} />
+					<Route path='*' element={<NotFound />} />
 				</Routes>
 			</BrowserRouter>
 		</Provider>
