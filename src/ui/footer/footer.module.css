@@ -1,0 +1,8 @@
+.footer {
+	font-family: var(--inter-font);
+	font-size: var(--small);
+	font-weight: var(--medium-weight);
+	color: var(--black-05);
+	text-align: center;
+	line-height: var(--small-line-height);
+}

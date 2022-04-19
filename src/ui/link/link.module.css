@@ -1,0 +1,30 @@
+.link {
+	font-family: var(--inter-font);
+	font-size: var(--small);
+	font-weight: var(--bold-weight);
+	color: var(--black-05);
+	text-transform: uppercase;
+	text-decoration: none;
+	line-height: var(--line-height);
+	letter-spacing: var(--tight-letter-spacing);
+	display: inline-flex;
+	align-items: center;
+}
+
+.link:hover {
+	color: var(--black);
+}
+
+.link__with_arrow::after {
+	content: '';
+	background: url('arrow.svg');
+	width: 44px;
+	height: 9px;
+	display: inline-block;
+	opacity: 0.5;
+	margin-left: var(--spacing);
+}
+
+.link__with_arrow:hover::after {
+	opacity: 1;
+}

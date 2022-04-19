@@ -2,6 +2,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Options } from '../reducers/quiz';
 import { user } from '../reducers/user';
+import Button from '../ui/button/Button';
 
 type QuestionProps = {
 	id: string;
@@ -26,11 +27,12 @@ const CurrentQuestion = ({
 		<div>
 			<p dangerouslySetInnerHTML={{ __html: question }}></p>
 			{options.map((option, index) => (
-				<button
+				<Button
 					key={option}
 					onClick={() => onAnswerSubmit(index)}
 					dangerouslySetInnerHTML={{ __html: option }}
-				></button>
+					state={false}
+				></Button>
 			))}
 		</div>
 	);

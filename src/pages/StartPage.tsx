@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { user } from '../reducers/user';
+import Input from '../ui/input/Input';
 
 const StartPage = () => {
 	const [name, setName] = useState('');
@@ -24,18 +25,21 @@ const StartPage = () => {
 	return (
 		<>
 			<h1>Välkommen till quiz!</h1>
-			<form onSubmit={addName}>
-				<input
-					type='text'
-					value={name}
-					onChange={onNameChange}
-					placeholder='Who is taking the test?'
-					required
-				/>
-				<button type='submit' disabled={!name}>
-					Go!
-				</button>
-			</form>
+			<div>
+				<form onSubmit={addName}>
+					<Input
+						// type='text'
+						value={name}
+						onChange={onNameChange}
+						placeholder='Who is taking the test?'
+						state={false}
+						// required
+					/>
+					<button type='submit' disabled={!name}>
+						Go!
+					</button>
+				</form>
+			</div>
 		</>
 	);
 };

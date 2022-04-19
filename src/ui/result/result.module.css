@@ -1,0 +1,8 @@
+.result {
+	font-size: var(--extra-large);
+	font-weight: var(--extra-bold-weight);
+	color: var(--green);
+	font-family: var(--druk-font);
+	letter-spacing: var(--letter-spacing);
+	line-height: var(--medium-line-height);
+}

@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../App';
-import { Link } from 'react-router-dom';
 import { fetchQuestions } from '../reducers/quiz';
+import Link from '../components/Link';
 
 const Quiz = () => {
 	const dispatch = useDispatch();

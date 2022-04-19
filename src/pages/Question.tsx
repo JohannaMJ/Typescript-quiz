@@ -1,8 +1,9 @@
 import { useSelector } from 'react-redux';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { RootState } from '../App';
 import CurrentQuestion from '../components/CurrentQuestion';
 import ResetBtn from '../components/ResetBtn';
+import Link from '../components/Link';
 
 const Questions = () => {
 	const { index } = useParams();
@@ -38,7 +39,9 @@ const Questions = () => {
 					{nextQuestionIndex === numberOfQuestions ? (
 						<Link to='/summary'> Finish quiz</Link>
 					) : (
-						<Link to={`/quiz/${nextQuestionIndex}`}>Next question</Link>
+						<Link to={`/quiz/${nextQuestionIndex}`} icon='arrow'>
+							Next question
+						</Link>
 					)}
 				</div>
 			) : (
