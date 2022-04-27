@@ -1,12 +1,19 @@
 import React from 'react';
-import Link from '../components/Link';
+import LargeText from '../ui/largeText';
+import Logo from '../ui/logo';
+import PageGrid from '../ui/pageGrid';
+import LinkButton from '../components/LinkButton';
+import Card from '../ui/card';
 
 const NotFound = () => {
 	return (
-		<div>
-			<h1>PageNotFound</h1>
-			<Link to='/'>Go to startpage</Link>
-		</div>
+		<PageGrid gridType='full-page'>
+			<Logo>Quizzz</Logo>
+			<Card type='blankCard'>
+				<LargeText>Page not found :(</LargeText>
+				<LinkButton to='/'>Startpage</LinkButton>
+			</Card>
+		</PageGrid>
 	);
 };
 

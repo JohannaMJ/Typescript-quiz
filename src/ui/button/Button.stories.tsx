@@ -18,11 +18,3 @@ export const Primary = Template.bind({});
 Primary.args = {
 	children: 'Starta',
 };
-
-export const Secondary = Template.bind({});
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
-Secondary.args = {
-	children: 'Option 1 - 4',
-	buttonType: 'secondary',
-	state: false,
-};

@@ -1,18 +1,16 @@
 import clsx from 'clsx';
-import React from 'react';
+import React, { HTMLProps } from 'react';
 
 import styles from './label.module.css';
 
-type LabelProps = {
-	label: string;
-};
+type LabelProps = {} & HTMLProps<HTMLHeadingElement>;
 
-const Label = ({ label, ...props }: LabelProps) => {
+const Label = ({ children, ...props }: LabelProps) => {
 	const className = clsx(styles.label);
 	return (
-		<div {...props} className={className}>
-			{label}
-		</div>
+		<h2 {...props} className={className}>
+			{children}
+		</h2>
 	);
 };
 

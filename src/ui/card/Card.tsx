@@ -1,14 +1,18 @@
 import clsx from 'clsx';
-import React from 'react';
+import React, { HTMLProps } from 'react';
 import styles from './card.module.css';
 
-type CardProps = {};
+type CardProps = {
+	type?: 'card' | 'blankCard';
+} & HTMLProps<HTMLDivElement>;
 
-const Card = (props: CardProps) => {
-	const className = clsx(styles.card);
+const Card = ({ type = 'blankCard', ...props }: CardProps) => {
+	const cardClassName = clsx(styles.blankCard, {
+		[styles.card]: type === 'card',
+	});
 	return (
-		<div {...props} className={className}>
-			<div>Container for form (input &button)</div>
+		<div className={styles.container}>
+			<div {...props} className={cardClassName} />
 		</div>
 	);
 };

@@ -3,6 +3,7 @@
 	border: 1px solid var(--red);
 	color: var(--white);
 	height: 4.313rem;
+	max-width: 300px;
 	padding-left: calc(4 * var(--spacing));
 	padding-right: calc(4 * var(--spacing));
 	font-size: var(--small);
@@ -10,22 +11,14 @@
 	text-transform: uppercase;
 	border-radius: 0.5rem;
 	letter-spacing: var(--tight-letter-spacing);
+	cursor: pointer;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-decoration: none;
 }
 
-.button__secondary {
-	background-color: transparent;
-	color: var(--black-03);
-	border-color: var(--black-06);
-	width: 16.125rem;
-	height: 4.3125rem;
-}
-
-.button__secondary:hover {
-	background-color: var(--black-03);
-	color: var(--white);
-}
-
-.button__chosen {
-	background-color: var(--black-03);
-	color: var(--white);
+.button:hover {
+	background-color: #ef4d38;
+	border: 1px solid #ef4d38;
 }

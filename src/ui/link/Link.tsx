@@ -18,11 +18,9 @@ const LinkComponent = <Type extends React.ElementType = 'a'>({
 	});
 	const Component = component ?? 'a';
 	return (
-		<>
-			<Component {...props} className={className}>
-				{children}
-			</Component>
-		</>
+		<Component {...props} className={className}>
+			{children}
+		</Component>
 	);
 };
 

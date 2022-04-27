@@ -1,21 +1,33 @@
-.card {
-	width: 75rem;
-	height: 48.4375rem;
-	background-image: url('rubik.jpg');
-	background-repeat: no-repeat;
-	background-size: cover;
-	/* background-position: center; */
-	background-color: var(--light-grey);
-	border-radius: 16px;
+.container {
+	grid-area: card;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	position: absolute;
-	padding: 0;
-	margin: 0;
-	box-shadow: 0px 107px 94px rgba(35, 43, 6, 0.18),
-		0px 63.0016px 49.0304px rgba(35, 43, 6, 0.130176),
-		0px 32.3568px 23.0112px rgba(35, 43, 6, 0.101088),
-		0px 13.0112px 10.0768px rgba(35, 43, 6, 0.078912),
-		0px 2.9104px 4.3616px rgba(35, 43, 6, 0.049824);
+}
+
+.blankCard {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 2rem;
+}
+
+.card {
+	background-image: url('rubik.jpg');
+	opacity: 0.9;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	background-color: var(--light-grey);
+	border-radius: 16px;
+	height: 100%;
+	width: 100%;
+	gap: 0.5rem;
+}
+
+@media (min-width: 667px) {
+	.card {
+		flex-direction: row;
+	}
 }

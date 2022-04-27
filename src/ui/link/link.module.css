@@ -9,10 +9,12 @@
 	letter-spacing: var(--tight-letter-spacing);
 	display: inline-flex;
 	align-items: center;
+	cursor: pointer;
+	margin: 0;
 }
 
 .link:hover {
-	color: var(--black);
+	color: var(--black-06);
 }
 
 .link__with_arrow::after {

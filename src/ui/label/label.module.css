@@ -3,8 +3,8 @@
 	font-size: var(--small);
 	font-weight: var(--bold-weight);
 	color: var(--white-04);
-	/* bg color är med för att texten ska synas */
-	background-color: var(--black);
 	line-height: var(--line-height);
 	letter-spacing: var(--tight-letter-spacing);
+	text-transform: uppercase;
+	margin: 0;
 }

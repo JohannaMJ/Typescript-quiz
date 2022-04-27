@@ -3,9 +3,9 @@
 	font-family: var(--druk-font);
 	font-weight: var(--extra-bold-weight);
 	color: var(--white);
-	/* added to see the text */
-	background-color: var(--black);
 	text-transform: uppercase;
 	line-height: var(--tight-line-height);
 	letter-spacing: var(--letter-spacing);
+	margin: 0;
+	word-break: break-word;
 }

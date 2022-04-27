@@ -20,7 +20,7 @@ export const user = createSlice({
 		}),
 		saveAnswer: (state, action: PayloadAction<[number, number]>) => {
 			const [questionIndex, answerValue] = action.payload;
-			if (state.answers[questionIndex]) {
+			if (typeof state.answers[questionIndex] !== 'undefined') {
 				state.answers[questionIndex] = answerValue;
 			} else {
 				state.answers.push(answerValue);

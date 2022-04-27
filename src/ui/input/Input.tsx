@@ -1,29 +1,17 @@
-import React, { ChangeEventHandler } from 'react';
+import React, { HTMLProps } from 'react';
 import clsx from 'clsx';
 import styles from './input.module.css';
 
 type InputProps = {
-	value?: string;
-	onChange: ChangeEventHandler<HTMLInputElement>;
-	placeholder?: string;
-	state: boolean;
-};
+	error?: boolean;
+} & HTMLProps<HTMLInputElement>;
 
-const Input = ({ placeholder, value, state, ...props }: InputProps) => {
-	console.log(placeholder);
+const Input = ({ error, ...props }: InputProps) => {
+	console.log(props);
 	const className = clsx(styles.input, {
-		[styles.input__error]: state === true,
+		[styles.input__error]: error,
 	});
-	return (
-		<>
-			<input
-				type='text'
-				{...props}
-				className={className}
-				placeholder={placeholder}
-			/>
-		</>
-	);
+	return <input type='text' {...props} className={className} />;
 };
 
 export default Input;

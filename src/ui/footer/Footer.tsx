@@ -1,18 +1,12 @@
 import clsx from 'clsx';
-import React from 'react';
+import React, { HTMLProps } from 'react';
 import styles from './footer.module.css';
 
-type FooterProps = {
-	children: string;
-};
+type FooterProps = {} & HTMLProps<HTMLDivElement>;
 
-const Footer = ({ children, ...props }: FooterProps) => {
+const Footer = ({ ...props }: FooterProps) => {
 	const className = clsx(styles.footer);
-	return (
-		<div {...props} className={className}>
-			<div>{children}</div>
-		</div>
-	);
+	return <div {...props} className={className} />;
 };
 
 export default Footer;

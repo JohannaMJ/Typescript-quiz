@@ -2,9 +2,9 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { user } from '../reducers/user';
-import Button from '../ui/button/Button';
+import Button, { ButtonProps } from '../ui/button/Button';
 
-const ResetBtn = () => {
+const ResetBtn = (props: ButtonProps<'button'>) => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 
@@ -14,7 +14,7 @@ const ResetBtn = () => {
 	};
 
 	return (
-		<Button onClick={restart} state={false}>
+		<Button onClick={restart} {...props}>
 			Restart
 		</Button>
 	);

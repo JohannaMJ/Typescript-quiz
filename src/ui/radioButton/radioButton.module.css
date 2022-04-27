@@ -1,0 +1,39 @@
+.container {
+	margin: 0;
+	cursor: pointer;
+}
+
+.input {
+	appearance: none;
+	margin: 0;
+	position: absolute;
+}
+
+.label {
+	font-family: var(--inter-font);
+	font-size: var(--small);
+	font-weight: var(--bold-weight);
+	line-height: var(--line-height);
+	letter-spacing: var(--tight-letter-spacing);
+	color: var(--black-03);
+	background-color: transparent;
+	border: 1px solid var(--black-03);
+	border-radius: 0.5rem;
+	text-transform: uppercase;
+	height: 4.3125rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	box-sizing: border-box;
+}
+
+.label:hover {
+	background-color: var(--black-03);
+	color: var(--white);
+}
+
+.input:checked + .label {
+	border: 1px solid var(--black-06);
+	background-color: var(--black-03);
+	color: var(--white);
+}

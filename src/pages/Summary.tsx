@@ -1,7 +1,15 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../App';
-import ResetBtn from '../components/ResetBtn';
+import ResetBtn from '../components/ResetButton';
+import Aside from '../ui/aside';
+import Label from '../ui/label';
+import LargeText from '../ui/largeText';
+import LeftColumn from '../ui/leftColumn';
+import Logo from '../ui/logo';
+import PageGrid from '../ui/pageGrid';
+import Result from '../ui/result';
+import RightColumn from '../ui/rightColumn';
 
 const Summary = () => {
 	const correctAnswers = useSelector((state: RootState) =>
@@ -23,19 +31,29 @@ const Summary = () => {
 	console.log("amount of user's correct answers", numberOfCorrectAnswers);
 
 	return (
-		<div>
-			<h1>Summary</h1>
-			<h2>{user.name},</h2>
-			<h2>
-				You got {numberOfCorrectAnswers}/{correctAnswers.length} points!
-			</h2>
-			{numberOfCorrectAnswers >= correctAnswers.length / 2 ? (
-				<h2>Well done!!</h2>
-			) : (
-				<p>You need to practice more...</p>
-			)}
-			<ResetBtn />
-		</div>
+		<PageGrid>
+			<LeftColumn>
+				<Logo type='twocolumn'>Quizzzzz</Logo>
+
+				<Label>Result</Label>
+				{numberOfCorrectAnswers >= correctAnswers.length / 2 ? (
+					<LargeText>Well done, {user.name}. You got </LargeText>
+				) : (
+					<LargeText>
+						You need to practice more, {user.name}. You got{' '}
+					</LargeText>
+				)}
+			</LeftColumn>
+			<RightColumn type='resultGrid'>
+				<Result
+					result={numberOfCorrectAnswers}
+					numberOfQuestions={correctAnswers.length}
+				/>
+				<Aside>
+					<ResetBtn />
+				</Aside>
+			</RightColumn>
+		</PageGrid>
 	);
 };
 

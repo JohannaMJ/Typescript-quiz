@@ -2,12 +2,12 @@
 @import url('//db.onlinewebfonts.com/c/2206d6cc490084998d531e8c1b2cbb4a?family=Druk+Wide');
 
 :root {
-	--green: #bfe948;
-	--black: #131416;
+	--mint: #8ddbb9;
+	--darkgreen: #0a422a;
 	--black-06: rgba(19, 20, 22, 0.6);
 	--black-05: rgba(19, 20, 22, 0.5);
 	--black-03: rgba(19, 20, 22, 0.3);
-	--red: #ff0000;
+	--red: #fc7260;
 	--white: #ffffff;
 	--light-grey: #f6f6f6;
 
@@ -19,8 +19,8 @@
 
 	--small: 0.875rem;
 	--medium: 1.25rem;
-	--large: 4.0625rem;
-	--extra-large: 26.85rem;
+	--large: clamp(1rem, 4vw, 5.0625rem);
+	--extra-large: clamp(12rem, 23vw, 26.85rem);
 
 	--spacing: 0.5rem;
 

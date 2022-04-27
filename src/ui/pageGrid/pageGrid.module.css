@@ -1,0 +1,28 @@
+.pageGrid {
+	display: grid;
+	height: 100vh;
+	row-gap: 4rem;
+}
+
+.pageGrid_fullPage {
+	grid-template-columns: 100%;
+	grid-template-rows: 122px auto 122px;
+	grid-template-areas: 'logo' 'card' 'footer';
+	background-color: var(--mint);
+	padding: 0 12%;
+}
+
+.pageGrid_twoColumn {
+	grid-template-columns: 100%;
+	grid-template-rows: 1fr 1fr;
+	grid-template-areas: 'leftColumn' 'rightColumn';
+	background-color: var(--darkgreen);
+}
+
+@media (min-width: 667px) {
+	.pageGrid_twoColumn {
+		grid-template-columns: 50% 50%;
+		grid-template-rows: 100%;
+		grid-template-areas: 'leftColumn rightColumn';
+	}
+}

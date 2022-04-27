@@ -2,29 +2,25 @@ import React, { ButtonHTMLAttributes, DetailedHTMLProps } from 'react';
 import clsx from 'clsx';
 import styles from './button.module.css';
 
-type ButtonProps = {
-	buttonType?: 'primary' | 'secondary';
-	state: boolean;
+export type ButtonProps<Type extends React.ElementType> = {
+	component?: Type;
 } & DetailedHTMLProps<
 	ButtonHTMLAttributes<HTMLButtonElement>,
 	HTMLButtonElement
 >;
 
-const Button = ({
-	buttonType = 'primary',
-	state,
+const Button = <Type extends React.ElementType = 'button'>({
+	component,
 	children,
 	...props
-}: ButtonProps) => {
-	const className = clsx(styles.button, {
-		[styles.button__secondary]: buttonType === 'secondary',
-		[styles.button__chosen]: buttonType === 'secondary' && state === true,
-	});
+}: ButtonProps<Type> & React.ComponentPropsWithoutRef<Type>) => {
+	const className = clsx(styles.button);
+	const Component = component ?? 'button';
 
 	return (
-		<button {...props} className={className}>
+		<Component {...props} className={className}>
 			{children}
-		</button>
+		</Component>
 	);
 };
 

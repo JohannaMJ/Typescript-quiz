@@ -1,8 +1,10 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../App';
 import { Options } from '../reducers/quiz';
 import { user } from '../reducers/user';
-import Button from '../ui/button/Button';
+import AnswerOptions from '../ui/options';
+import RadioButton from '../ui/radioButton';
 
 type QuestionProps = {
 	id: string;
@@ -12,29 +14,29 @@ type QuestionProps = {
 	questionIndex: number;
 };
 
-const CurrentQuestion = ({
-	question,
-	options,
-	questionIndex,
-}: QuestionProps) => {
+const CurrentQuestion = ({ options, questionIndex }: QuestionProps) => {
 	const dispatch = useDispatch();
+	const currentAnswer = useSelector<RootState, number | undefined>(
+		(state) => state.user.answers[questionIndex]
+	);
 
-	const onAnswerSubmit = (index: number) => {
-		console.log('answer', index);
-		dispatch(user.actions.saveAnswer([questionIndex, index]));
+	const onAnswerSubmit = (optionIndex: number) => {
+		dispatch(user.actions.saveAnswer([questionIndex, optionIndex]));
 	};
 	return (
-		<div>
-			<p dangerouslySetInnerHTML={{ __html: question }}></p>
-			{options.map((option, index) => (
-				<Button
+		<AnswerOptions>
+			{options.map((option, optionIndex) => (
+				<RadioButton
 					key={option}
-					onClick={() => onAnswerSubmit(index)}
-					dangerouslySetInnerHTML={{ __html: option }}
-					state={false}
-				></Button>
+					onClick={() => onAnswerSubmit(optionIndex)}
+					name={`question-${questionIndex}`}
+					checked={currentAnswer === optionIndex}
+					readOnly
+				>
+					{option}
+				</RadioButton>
 			))}
-		</div>
+		</AnswerOptions>
 	);
 };
 
