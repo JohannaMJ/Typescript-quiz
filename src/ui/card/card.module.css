@@ -1,0 +1,33 @@
+.container {
+	grid-area: card;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.blankCard {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 2rem;
+}
+
+.card {
+	background-image: url('rubik.jpg');
+	opacity: 0.9;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	background-color: var(--light-grey);
+	border-radius: 16px;
+	height: 100%;
+	width: 100%;
+	gap: 0.5rem;
+}
+
+@media (min-width: 667px) {
+	.card {
+		flex-direction: row;
+	}
+}

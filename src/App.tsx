@@ -6,10 +6,12 @@ import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { quiz } from './reducers/quiz';
 import { user } from './reducers/user';
 
-import './App.css';
+import './styles/theme.css';
+import './styles/base.css';
+
 import StartPage from './pages/StartPage';
 import Quiz from './pages/Quiz';
-import Question from './pages/Question';
+import Question from './pages/Questions';
 import Summary from './pages/Summary';
 import NotFound from './pages/NotFound';
 

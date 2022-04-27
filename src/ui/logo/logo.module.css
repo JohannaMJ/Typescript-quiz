@@ -1,0 +1,53 @@
+.container {
+	display: flex;
+	align-items: flex-end;
+	justify-self: center;
+	font-family: var(--druk-font);
+	font-size: var(--medium);
+	font-weight: var(--regular);
+	color: var(--black-06);
+	line-height: var(--medium-line-height);
+	letter-spacing: var(--letter-spacing);
+	text-transform: uppercase;
+	grid-area: logo;
+	width: auto;
+}
+
+.container__twocolumn {
+	justify-self: flex-start;
+	align-items: center;
+	color: var(--light-grey);
+	width: 100%;
+}
+
+.logo {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+}
+
+.logo::before {
+	content: '';
+	background: url('quiziconDark.svg');
+	background-repeat: no-repeat;
+	width: 44px;
+	height: 44px;
+	display: block;
+	opacity: 0.6;
+	margin-bottom: 0.5rem;
+}
+
+.logo__twocolumn {
+	display: flex;
+	flex-direction: row;
+}
+
+.logo__twocolumn::before {
+	background: url('quiziconLight.svg');
+	background-repeat: no-repeat;
+	opacity: 1;
+	margin-right: 0.5rem;
+	margin-bottom: 0;
+}

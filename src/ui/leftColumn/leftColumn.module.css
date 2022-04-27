@@ -1,0 +1,10 @@
+.leftColumn {
+	grid-area: leftColumn;
+	display: grid;
+	grid-template-columns: 100%;
+	grid-template-rows: 122px 21px auto;
+	grid-template-areas: 'logo' 'label' 'question';
+	background-color: var(--darkgreen);
+	row-gap: 2rem;
+	padding: 0 10% 10%;
+}

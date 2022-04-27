@@ -1,0 +1,13 @@
+.footer {
+	grid-area: footer;
+	font-family: var(--inter-font);
+	font-size: var(--small);
+	font-weight: var(--medium-weight);
+	color: var(--black-05);
+	line-height: var(--small-line-height);
+	background-color: var(--mint);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+}

@@ -1,0 +1,11 @@
+.largeText {
+	font-size: var(--large);
+	font-family: var(--druk-font);
+	font-weight: var(--extra-bold-weight);
+	color: var(--white);
+	text-transform: uppercase;
+	line-height: var(--tight-line-height);
+	letter-spacing: var(--letter-spacing);
+	margin: 0;
+	word-break: break-word;
+}

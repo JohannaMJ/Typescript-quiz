@@ -1,0 +1,24 @@
+.button {
+	background-color: var(--red);
+	border: 1px solid var(--red);
+	color: var(--white);
+	height: 4.313rem;
+	max-width: 300px;
+	padding-left: calc(4 * var(--spacing));
+	padding-right: calc(4 * var(--spacing));
+	font-size: var(--small);
+	font-weight: var(--bold-weight);
+	text-transform: uppercase;
+	border-radius: 0.5rem;
+	letter-spacing: var(--tight-letter-spacing);
+	cursor: pointer;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-decoration: none;
+}
+
+.button:hover {
+	background-color: #ef4d38;
+	border: 1px solid #ef4d38;
+}

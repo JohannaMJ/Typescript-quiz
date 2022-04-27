@@ -1,0 +1,19 @@
+.input {
+	height: 4.3125rem;
+	border: none;
+	border-radius: 8px;
+	background-color: var(--light-grey);
+	color: var(--black-05);
+	padding-left: 1.75rem;
+	font-family: var(--inter-font);
+	font-weight: var(--medium-weight);
+	font-size: var(--small);
+	line-height: var(--line-height);
+	width: 40%;
+	min-width: 200px;
+	max-width: 400px;
+}
+
+.input__error {
+	border: 1px solid red;
+}

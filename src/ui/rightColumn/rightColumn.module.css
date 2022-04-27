@@ -1,0 +1,26 @@
+.rightColumn {
+	grid-area: rightColumn;
+	display: grid;
+	grid-template-rows: auto max-content max-content;
+	grid-template-areas: 'options' 'nav' 'reset';
+	row-gap: 37px;
+	padding: 10%;
+	align-items: center;
+	background-color: var(--mint);
+}
+
+.rightColumn__resultGrid {
+	background-color: var(--darkgreen);
+}
+
+@media (min-width: 667px) {
+	.rightColumn {
+		grid-template-rows: max-content auto max-content;
+		grid-template-areas: 'reset' 'options' 'nav';
+	}
+
+	.rightColumn__resultGrid {
+		grid-template-rows: max-content auto max-content;
+		grid-template-areas: 'options' 'nav' 'reset';
+	}
+}
